@@ -15,7 +15,7 @@ import java.util.List;
  * 后台用户管理Service
  * Created by macro on 2018/4/26.
  */
-public interface UmsAdminTestService extends IService<UmsAdmin> {
+public interface UmsAdminTestService  {
     /**
      * 根据用户名获取后台管理员
      */

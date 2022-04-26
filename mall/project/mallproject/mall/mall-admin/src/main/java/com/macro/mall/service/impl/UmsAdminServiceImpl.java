@@ -112,6 +112,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 //            updateLoginTimeByUsername(username);
             insertLoginLog(username);
         } catch (AuthenticationException e) {
+            e.printStackTrace();
             LOGGER.warn("登录异常:{}", e.getMessage());
         }
         return token;
@@ -227,7 +228,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         if(CollUtil.isNotEmpty(resourceList)){
             return  resourceList;
         }
-        resourceList = adminRoleRelationDao.getResourceList(adminId);
+      //  resourceList = adminRoleRelationDao.getResourceList(adminId);
+        List<UmsResource> result = adminRoleRelationDao.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             adminCacheService.setResourceList(adminId,resourceList);
         }

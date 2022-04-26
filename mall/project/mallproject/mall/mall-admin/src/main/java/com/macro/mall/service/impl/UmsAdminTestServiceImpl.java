@@ -2,16 +2,25 @@ package com.macro.mall.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.macro.mall.common.enums.UserEnum;
+import com.macro.mall.common.exception.UseException;
+import com.macro.mall.common.util.BeanDtoVoUtil;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.mapper.UmsAdminMapper;
 import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsAdminExample;
 import com.macro.mall.model.UmsResource;
 import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsAdminTestService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +28,12 @@ import java.util.List;
  * @since: 2022-04-26 11:17
  **/
 @Service
-public class UmsAdminTestServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> implements UmsAdminTestService {
+public class UmsAdminTestServiceImpl  implements UmsAdminTestService {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UmsAdminMapper umsAdminMapper;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
@@ -34,13 +48,29 @@ public class UmsAdminTestServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmi
      */
     @Override
     public UmsAdmin register(UmsAdminParam umsAdminParam) {
+        UmsAdmin umsAdmin = new UmsAdmin();
         //
-        List<UmsAdmin> umsAdmins = baseMapper.selectList(new LambdaQueryWrapper<UmsAdmin>().eq(UmsAdmin::getUsername, umsAdminParam.getUsername()).eq(UmsAdmin::getStatus, 1));
-        if (umsAdmins.size() > 0) {
-            return null;
+//        List<UmsAdmin> umsAdmins = umsAdminMapper.selectList(new LambdaQueryWrapper<UmsAdmin>().eq(UmsAdmin::getUsername, umsAdminParam.getUsername()).eq(UmsAdmin::getStatus, 1));
+//        if (umsAdmins.size() > 0) {
+//            throw new UseException(UserEnum.USER_NAME_IS_EXIST);
+//        }
+//        List<UmsAdmin> umsAdmins1 = umsAdminMapper.selectList(new LambdaQueryWrapper<UmsAdmin>().eq(UmsAdmin::getEmail, umsAdminParam.getEmail()).eq(UmsAdmin::getStatus, 1));
+//        if (umsAdmins.size() > 0) {
+//            throw new UseException(UserEnum.USER_EMAIL_IS_EXIST);
+//        }
+        BeanUtils.copyProperties(umsAdminParam, umsAdmin);
+        umsAdmin.setCreateTime(new Date());
+        umsAdmin.setStatus(1);
+        umsAdmin.setPassword(passwordEncoder.encode(umsAdminParam.getPassword()));
+        //判重
+        //查询是否有相同用户名的用户
+        UmsAdminExample example = new UmsAdminExample();
+        example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
+        int insert = umsAdminMapper.insert(umsAdmin);
+        if (insert >= 0) {
+            return umsAdmin;
         }
-
-        return null;
+        throw new UseException(UserEnum.INSERT_ADMIN_FAIL);
     }
 
     @Override

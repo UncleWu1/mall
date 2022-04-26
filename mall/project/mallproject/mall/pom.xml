@@ -52,6 +52,7 @@
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
         <mall-mybatis-plus.version>3.4.3.2</mall-mybatis-plus.version>
+        <org.apache.velocity.version>2.2</org.apache.velocity.version>
     </properties>
 
     <dependencies>
@@ -203,6 +204,18 @@
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
             </dependency>
+            <!--mybatis plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mall-mybatis-plus.version}</version>
+            </dependency>
+            <!--代码模板-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${org.apache.velocity.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -218,13 +231,13 @@
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>${docker.maven.plugin.version}</version>
                     <!--<executions>-->
-                        <!--<execution>-->
-                            <!--<id>build-image</id>-->
-                            <!--<phase>package</phase>-->
-                            <!--<goals>-->
-                                <!--<goal>build</goal>-->
-                            <!--</goals>-->
-                        <!--</execution>-->
+                    <!--<execution>-->
+                    <!--<id>build-image</id>-->
+                    <!--<phase>package</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>build</goal>-->
+                    <!--</goals>-->
+                    <!--</execution>-->
                     <!--</executions>-->
                     <configuration>
                         <imageName>mall/${project.artifactId}:${project.version}</imageName>

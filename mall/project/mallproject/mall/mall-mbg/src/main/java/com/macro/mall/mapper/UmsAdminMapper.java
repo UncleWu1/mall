@@ -6,7 +6,7 @@ import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
-public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
+public interface UmsAdminMapper {
     long countByExample(UmsAdminExample example);
 
     int deleteByExample(UmsAdminExample example);
