@@ -3,9 +3,10 @@ package com.macro.mall.mapper;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsAdminExample;
 import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
-public interface UmsAdminMapper {
+public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
     long countByExample(UmsAdminExample example);
 
     int deleteByExample(UmsAdminExample example);

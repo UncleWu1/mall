@@ -1,9 +1,13 @@
 package com.macro.mall.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 public class UmsAdmin implements Serializable {
     private Long id;
 
@@ -12,24 +16,32 @@ public class UmsAdmin implements Serializable {
     private String password;
 
     @ApiModelProperty(value = "头像")
+    @TableField("icon")
     private String icon;
 
+
     @ApiModelProperty(value = "邮箱")
+    @TableField("email")
     private String email;
 
     @ApiModelProperty(value = "昵称")
+    @TableField("nick_name")
     private String nickName;
 
     @ApiModelProperty(value = "备注信息")
+    @TableField("note")
     private String note;
 
     @ApiModelProperty(value = "创建时间")
+    @TableField("create_time")
     private Date createTime;
 
     @ApiModelProperty(value = "最后登录时间")
+    @TableField("login_time")
     private Date loginTime;
 
     @ApiModelProperty(value = "帐号启用状态：0->禁用；1->启用")
+    @TableField("status")
     private Integer status;
 
     private static final long serialVersionUID = 1L;
