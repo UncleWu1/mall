@@ -82,6 +82,8 @@ public class UmsAdminController {
         return CommonResult.success(tokenMap);
     }
 
+    //测试测试
+
     @ApiOperation(value = "获取当前登录用户信息")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
