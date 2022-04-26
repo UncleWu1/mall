@@ -50,10 +50,8 @@ public class CodeGenerator {
         // 4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(null); //模块名
-        pc.setParent("com.macro.mall.mall-admin");
-        pc.setController("controller");
-        pc.setEntity("entity");
-        pc.setService("service");
+        pc.setParent("com.macro.mall.mall-mbg");
+        pc.setEntity("model");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
