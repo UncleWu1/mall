@@ -7,43 +7,43 @@ import java.util.List;
 public class UmsAdminExample {
     protected String orderByClause;
 
-    protected boolean distinct;
+    protected boolean distinct;//字段
 
-    protected List<Criteria> oredCriteria;
+    protected List<Criteria> oredCriteria;//字段
 
     public UmsAdminExample() {
         oredCriteria = new ArrayList<>();
-    }
+    }//方法
 
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
-    }
+    }//方法
 
     public String getOrderByClause() {
         return orderByClause;
-    }
+    }//方法
 
     public void setDistinct(boolean distinct) {
         this.distinct = distinct;
-    }
+    }//方法
 
     public boolean isDistinct() {
         return distinct;
-    }
+    }//方法
 
     public List<Criteria> getOredCriteria() {
         return oredCriteria;
-    }
+    }//方法
 
     public void or(Criteria criteria) {
         oredCriteria.add(criteria);
-    }
+    }//方法
 
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
         oredCriteria.add(criteria);
         return criteria;
-    }
+    }//方法
 
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
@@ -51,18 +51,18 @@ public class UmsAdminExample {
             oredCriteria.add(criteria);
         }
         return criteria;
-    }
+    }//方法
 
     protected Criteria createCriteriaInternal() {
         Criteria criteria = new Criteria();
         return criteria;
-    }
+    }//方法
 
     public void clear() {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
-    }
+    }//方法
 
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -764,13 +764,13 @@ public class UmsAdminExample {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
-    }
+    }//抽象静态内部类
 
     public static class Criteria extends GeneratedCriteria {
         protected Criteria() {
             super();
         }
-    }
+    }//静态内部类
 
     public static class Criterion {
         private String condition;
@@ -856,5 +856,5 @@ public class UmsAdminExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
-    }
+    }//静态内部类
 }

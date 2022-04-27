@@ -1,7 +1,5 @@
 package com.macro.mall.service.impl;
 
-import com.macro.mall.common.enums.UserEnum;
-import com.macro.mall.common.exception.UseException;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.mapper.UmsAdminMapper;
@@ -12,6 +10,7 @@ import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsAdminTestService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,15 +23,24 @@ import java.util.List;
  * @since: 2022-04-26 11:17
  **/
 @Service
-public class UmsAdminTestServiceImpl  implements UmsAdminTestService {
+public class UmsAdminTestServiceImpl implements UmsAdminTestService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UmsAdminMapper umsAdminMapper;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Override
     public UmsAdmin getAdminByUsername(String username) {
+        UmsAdminExample umsAdminExample = new UmsAdminExample();
+        UmsAdminExample.Criteria criteria = umsAdminExample.createCriteria().andUsernameEqualTo(username);
+        List<UmsAdmin> umsAdmins = umsAdminMapper.selectByExample(umsAdminExample);
+        if (umsAdmins.size() > 0) {
+            return null;
+        }
         return null;
     }
 
@@ -62,15 +70,24 @@ public class UmsAdminTestServiceImpl  implements UmsAdminTestService {
         //查询是否有相同用户名的用户
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
+        List<UmsAdmin> umsAdmins = umsAdminMapper.selectByExample(example);
+        if (umsAdmins.size() > 0) {
+            return null;
+        }
         int insert = umsAdminMapper.insert(umsAdmin);
         if (insert >= 0) {
             return umsAdmin;
         }
-        throw new UseException(UserEnum.INSERT_ADMIN_FAIL);
+        return null;
     }
 
     @Override
     public String login(String username, String password) {
+        //将用用户的信息加密传输，使用spring security
+        //步骤1.先生成userDetil
+        //步骤二：拿到UserNameandPassWord授权认证返回token
+        //
+        UmsAdmin adminByUsername = getAdminByUsername(username);
         return null;
     }
 

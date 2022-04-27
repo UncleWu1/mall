@@ -99,6 +99,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         String token = null;
         //密码需要客户端加密后传递
         try {
+            //使用spring Security 把用户的信息和资源包装起来再传输
             UserDetails userDetails = loadUserByUsername(username);
             if(!passwordEncoder.matches(password,userDetails.getPassword())){
                 Asserts.fail("密码不正确");
@@ -106,10 +107,12 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             if(!userDetails.isEnabled()){
                 Asserts.fail("帐号已被禁用");
             }
+            //拿到userName和password来鉴权并返回token
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            //设置权限
             SecurityContextHolder.getContext().setAuthentication(authentication);
             token = jwtTokenUtil.generateToken(userDetails);
-//            updateLoginTimeByUsername(username);
+            updateLoginTimeByUsername(username);
             insertLoginLog(username);
         } catch (AuthenticationException e) {
             e.printStackTrace();
