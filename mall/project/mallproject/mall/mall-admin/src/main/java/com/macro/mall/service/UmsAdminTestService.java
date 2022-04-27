@@ -1,6 +1,6 @@
 package com.macro.mall.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+//import com.baomidou.mybatisplus.extension.service.IService;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;

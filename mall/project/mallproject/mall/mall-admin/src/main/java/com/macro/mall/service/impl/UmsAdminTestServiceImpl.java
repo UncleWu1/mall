@@ -1,10 +1,7 @@
 package com.macro.mall.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.macro.mall.common.enums.UserEnum;
 import com.macro.mall.common.exception.UseException;
-import com.macro.mall.common.util.BeanDtoVoUtil;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.mapper.UmsAdminMapper;
@@ -15,7 +12,6 @@ import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsAdminTestService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,3 +1,4 @@
+/*
 package com.macro.mall;
 
 import com.baomidou.mybatisplus.annotation.DbType;
@@ -12,10 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * @author: Wsq
  * @since: 2022-04-26 14:06
- **/
+ **//*
+
 
 @Slf4j
 public class CodeGenerator {
@@ -98,3 +101,4 @@ public class CodeGenerator {
         mpg.execute();
     }
 }
+*/

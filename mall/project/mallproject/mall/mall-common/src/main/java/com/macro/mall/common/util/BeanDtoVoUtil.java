@@ -1,3 +1,4 @@
+/*
 package com.macro.mall.common.util;
 
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+*/
 /**
  *  DTO，VO，entity 转换工具类
  *
@@ -19,15 +21,19 @@ import java.util.stream.Collectors;
  *     1.0.0: 采用 org.springframework.beans.BeanUtils 包下的 BeanUtils.copyProperties(dtoEntity, newInstance);
  *     1.0.1: 更新为 cglib，动态生成set/get方法，提供缓存，同一组转换只动态生成一次，效率高
  *  </P>
- */
+ *//*
+
 public class BeanDtoVoUtil {
 
-    /**
+    */
+/**
      * BeanCopier的缓存
-     */
+     *//*
+
     private static final ConcurrentHashMap<String, BeanCopier> BEAN_COPIER_CACHE = new ConcurrentHashMap<>();
 
-    /**
+    */
+/**
      * dot ,do ,entity 相互转换（使用cglib）
      *
      * <P>
@@ -44,7 +50,8 @@ public class BeanDtoVoUtil {
      * @param oldClass  原数据--Dto，Vo，entity
      * @param newClass  转换为--Dto，Vo，entity
      * @version 1.0.0
-     */
+     *//*
+
     public static <E> E convert(Object oldClass, Class<E> newClass) {
         if (oldClass == null) {
             return null;
@@ -71,10 +78,12 @@ public class BeanDtoVoUtil {
     }
 
 
-    /**
+    */
+/**
      * Page<Entity> 分页对象转 Page<Vo>  ( list 循环)
      * @version 1.0.0
-     */
+     *//*
+
     public static <T, V> IPage<V> pageVo(Page<T> page, Class<V> v) {
         if (page == null) {
             return null;
@@ -83,10 +92,12 @@ public class BeanDtoVoUtil {
     }
 
 
-    /**
+    */
+/**
      * list<Entity> 集合对象转list<Vo> ( list 循环)
      * @version 1.0.0
-     */
+     *//*
+
     public static <T, V> List<V> listVo(List<T> oldList, Class<V> v) {
         List<V> voList = new ArrayList<>();
         if (oldList != null) {
@@ -96,10 +107,12 @@ public class BeanDtoVoUtil {
     }
 
 
-    /**
+    */
+/**
      * list<Entity> 集合对象转list<Vo> （parallelStream 并行流方式，适合大量数据下使用）
      * @version 1.0.0
-     */
+     *//*
+
     public static <T, V> List<V> listVoStream(List<T> oldList, Class<V> v) {
         if (oldList == null || oldList.isEmpty()) {
             return new ArrayList<>();
@@ -107,3 +120,4 @@ public class BeanDtoVoUtil {
         return oldList.parallelStream().map(item -> (V) BeanDtoVoUtil.convert(item, v)).collect(Collectors.toList());
     }
 }
+*/

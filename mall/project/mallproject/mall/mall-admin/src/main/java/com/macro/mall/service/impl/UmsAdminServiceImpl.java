@@ -228,8 +228,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         if(CollUtil.isNotEmpty(resourceList)){
             return  resourceList;
         }
-      //  resourceList = adminRoleRelationDao.getResourceList(adminId);
-        List<UmsResource> result = adminRoleRelationDao.getResourceList(adminId);
+        resourceList = adminRoleRelationDao.getResourceList(adminId);
+      //  List<UmsResource> result = adminRoleRelationDao.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             adminCacheService.setResourceList(adminId,resourceList);
         }

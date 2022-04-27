@@ -1,76 +1,40 @@
 package com.macro.mall.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 public class UmsResource implements Serializable {
+
+    @TableField("id")
     private Long id;
 
     @ApiModelProperty(value = "创建时间")
+    @TableField("create_time")
     private Date createTime;
 
     @ApiModelProperty(value = "资源名称")
+    @TableField("name")
     private String name;
 
     @ApiModelProperty(value = "资源URL")
+    @TableField("url")
     private String url;
 
     @ApiModelProperty(value = "描述")
+    @TableField("description")
     private String description;
 
     @ApiModelProperty(value = "资源分类ID")
+    @TableField("category_id")
     private Long categoryId;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
 
     @Override
     public String toString() {

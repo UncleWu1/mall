@@ -18,7 +18,7 @@
         SELECT
             ur.id id,
             ur.create_time createTime,
-            ur.`name` `name`,
+            ur.`name` name,
             ur.url url,
             ur.description description,
             ur.category_id categoryId

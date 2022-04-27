@@ -51,8 +51,9 @@
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
-        <mall-mybatis-plus.version>3.4.3.2</mall-mybatis-plus.version>
+<!--        <mall-mybatis-plus.version>3.4.3.2</mall-mybatis-plus.version>
         <org.apache.velocity.version>2.2</org.apache.velocity.version>
+        <mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>-->
     </properties>
 
     <dependencies>
@@ -205,17 +206,22 @@
                 <version>${minio.version}</version>
             </dependency>
             <!--mybatis plus -->
-            <dependency>
+            <!--<dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mall-mybatis-plus.version}</version>
             </dependency>
-            <!--代码模板-->
+            &lt;!&ndash;代码模板&ndash;&gt;
             <dependency>
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${org.apache.velocity.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
