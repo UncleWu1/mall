@@ -80,6 +80,8 @@ public class UmsMenuController {
         return CommonResult.success(CommonPage.restPage(menuList));
     }
 
+
+
     @ApiOperation("树形结构返回所有菜单列表")
     @RequestMapping(value = "/treeList", method = RequestMethod.GET)
     @ResponseBody

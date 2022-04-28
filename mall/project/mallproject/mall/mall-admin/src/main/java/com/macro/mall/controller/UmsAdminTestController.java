@@ -35,10 +35,10 @@ public class UmsAdminTestController {
     @RequestMapping("/login")
     public CommonResult<UmsAdmin> login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         String token = umsAdminTestService.login(umsAdminLoginParam.getUsername(),umsAdminLoginParam.getPassword());
-        if (register == null) {
+        if (token == null) {
             return CommonResult.failed();
         } else {
-            return CommonResult.success(register);
+            return null;
         }
     }
 }

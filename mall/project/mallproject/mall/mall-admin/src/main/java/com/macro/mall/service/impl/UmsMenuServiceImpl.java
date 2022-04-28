@@ -5,6 +5,7 @@ import com.macro.mall.dto.UmsMenuNode;
 import com.macro.mall.mapper.UmsMenuMapper;
 import com.macro.mall.model.*;
 import com.macro.mall.service.UmsMenuService;
+import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,7 +79,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
         List<UmsMenu> menuList = menuMapper.selectByExample(new UmsMenuExample());
         List<UmsMenuNode> result = menuList.stream()
                 .filter(menu -> menu.getParentId().equals(0L))
-                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
+                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());//每一个父级菜单
         return result;
     }
 
@@ -95,9 +96,9 @@ public class UmsMenuServiceImpl implements UmsMenuService {
      */
     private UmsMenuNode covertMenuNode(UmsMenu menu, List<UmsMenu> menuList) {
         UmsMenuNode node = new UmsMenuNode();
-        BeanUtils.copyProperties(menu, node);
-        List<UmsMenuNode> children = menuList.stream()
-                .filter(subMenu -> subMenu.getParentId().equals(menu.getId()))
+        BeanUtils.copyProperties(menu, node);//menu转换前的类，node转换后的类
+        List<UmsMenuNode> children = menuList.stream()//menu代表父级节点
+                .filter(subMenu -> subMenu.getParentId().equals(menu.getId()))//找到对应的父级节点的所有子节点
                 .map(subMenu -> covertMenuNode(subMenu, menuList)).collect(Collectors.toList());
         node.setChildren(children);
         return node;
