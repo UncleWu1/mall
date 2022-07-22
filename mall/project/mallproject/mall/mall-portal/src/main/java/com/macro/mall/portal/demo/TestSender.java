@@ -29,28 +29,28 @@ import javax.annotation.Resource;
  * @author: Wsq
  * @since: 2022-06-17 17:34
  **/
-@RunWith(SpringJUnit4ClassRunner.class)
+
 @Component
 @RequiredArgsConstructor
-public class test {
+public class TestSender {
     private static Logger LOGGER = LoggerFactory.getLogger(CancelOrderSender.class);
     public final  AmqpTemplate amqpTemplate;
 
     public  void sendMessage(Long orderId, final long delayTimes) {
 //        AmqpTemplate amqpTemplate = SpringContextUtil.getBean(AmqpTemplate.class);
-        //给延迟队列发送消息
-        amqpTemplate.convertAndSend(QueueEnum.QUEUE_TTL_ORDER_CANCEL.getExchange(), QueueEnum.QUEUE_TTL_ORDER_CANCEL.getRouteKey(), orderId, new MessagePostProcessor() {
+        //给延迟队列发送消息,
+        //这里只需要指定交换机的名称和队列的routeKey就行了，这样就能找到对应的队列
+        amqpTemplate.convertAndSend(QueueEnum.QUEUE_ORDER_CANCEL_TEST.getExchange(), QueueEnum.QUEUE_ORDER_CANCEL_TEST.getRouteKey(), "测试消息2,当前时间:"+System.currentTimeMillis() /*orderId, new MessagePostProcessor() {
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
                 //给消息设置延迟毫秒值
                 message.getMessageProperties().setExpiration(String.valueOf(delayTimes));
                 return message;
             }
-        });
-        LOGGER.info("send orderId:{}", orderId);
+        }*/);
+//        LOGGER.info("send orderId:{}", orderId);
+//        System.out.println("消息发送者"+"send orderId:{}"+orderId);
     }
-    @Test
-    public  void one() {
-        sendMessage(1901l, 2131l);
-    }
+
+
 }

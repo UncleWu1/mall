@@ -15,7 +15,12 @@ public enum QueueEnum {
     /**
      * 消息通知ttl队列
      */
-    QUEUE_TTL_ORDER_CANCEL("mall.order.direct.ttl", "mall.order.cancel.ttl", "mall.order.cancel.ttl");
+    QUEUE_TTL_ORDER_CANCEL("mall.order.direct.ttl", "mall.order.cancel.ttl", "mall.order.cancel.ttl"),
+
+    /**
+     * 测试的消息队列
+     */
+     QUEUE_ORDER_CANCEL_TEST("wsq_exchange","", "wsq_queue_route_key");//名字不对应也无所谓的
 
     /**
      * 交换名称

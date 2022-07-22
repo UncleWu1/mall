@@ -75,6 +75,7 @@ public class EsProductServiceImpl implements EsProductService {
         productRepository.deleteById(id);
     }
 
+
     @Override
     public EsProduct create(Long id) {
         EsProduct result = null;
