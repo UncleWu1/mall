@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-admin/mall-admin.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-admin/mall-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-common/mall-common.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-common/mall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-demo/mall-demo.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-demo/mall-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-mbg/mall-mbg.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-mbg/mall-mbg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-portal/mall-portal.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-portal/mall-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-search/mall-search.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-search/mall-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/project/mallproject/mall/mall-security/mall-security.iml" filepath="$PROJECT_DIR$/mall/project/mallproject/mall/mall-security/mall-security.iml" />
+    </modules>
+  </component>
+</project>
